@@ -1,0 +1,25 @@
+From 331cbed7181adc1e17f1e274f0ca3718165d4e87 Mon Sep 17 00:00:00 2001
+From: Quentin Schulz <quentin.schulz@bootlin.com>
+Date: Wed, 25 Jul 2018 14:57:16 +0200
+Subject: [PATCH] Revert "gpio: omap_gpio: Add DM_FLAG_PRE_RELOC flag"
+
+This reverts commit 211312cc33fb44d9aeba40436b284fd33c9010ae.
+---
+ drivers/gpio/omap_gpio.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/gpio/omap_gpio.c b/drivers/gpio/omap_gpio.c
+index 559f29b801..7243100219 100644
+--- a/drivers/gpio/omap_gpio.c
++++ b/drivers/gpio/omap_gpio.c
+@@ -345,7 +345,6 @@ U_BOOT_DRIVER(gpio_omap) = {
+ 	.bind	= omap_gpio_bind,
+ 	.probe	= omap_gpio_probe,
+ 	.priv_auto_alloc_size = sizeof(struct gpio_bank),
+-	.flags = DM_FLAG_PRE_RELOC,
+ };
+ 
+ #endif /* CONFIG_DM_GPIO */
+-- 
+2.14.1
+
